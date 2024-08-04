@@ -20,8 +20,10 @@ return {
 				"lua_ls",
 				"rust_analyzer",
 				"gopls",
-				"tsserver",
-			},
+				"htmx",
+				"zls",
+				"pylsp",
+},
 			handlers = {
 				function (server_name)
 					require("lspconfig")[server_name].setup {}
@@ -39,7 +41,7 @@ return {
 			},
 			mapping = cmp.mapping.preset.insert({
 				['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-				['<C-n>'] = cmp.mapping.select_prev_item(cmp_select),
+				['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
 				['<C-y>'] = cmp.mapping.confirm({ select = true }),
 				['<C-Space>'] = cmp.mapping.complete(),
 			}),
