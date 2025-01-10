@@ -1,7 +1,7 @@
 return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
-		"williamboman/mason.nvim",
+ 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-buffer",
@@ -22,11 +22,22 @@ return {
 				"gopls",
 				"htmx",
 				"zls",
-				"pylsp",
 },
 			handlers = {
 				function (server_name)
-					require("lspconfig")[server_name].setup {}
+					require("lspconfig")[server_name].setup {
+						settings = {
+							Lua = {
+								diagnostics = {
+									-- Get the language server to recognize the `vim` global
+									globals = {
+										'vim',
+										'require'
+									},
+								},
+							},
+						},
+					}
 				end,
 			}
 		})

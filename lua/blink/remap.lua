@@ -6,6 +6,14 @@ vim.keymap.set("i", "kk", "<Esc>")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
+vim.keymap.set("n", "<leader>N", ":rightb vs BufEnter<Enter>")
+vim.keymap.set("n", "<leader>jj", "<C-W>j")
+vim.keymap.set("n", "<leader>kk", "<C-W>k")
+vim.keymap.set("n", "<leader>hh", "<C-W>h")
+vim.keymap.set("n", "<leader>ll", "<C-W>l")
+
+vim.keymap.set("n", "<leader>H", ":rightb vs BufEnter<Enter>:h<Enter><C-W>j:q<Enter>")
+
 vim.keymap.set("n", "<leader>r", "*:%s//")
 vim.keymap.set("v", "<leader>e", ":norm A")
 vim.keymap.set("v", "<leader>w", ":norm I")
