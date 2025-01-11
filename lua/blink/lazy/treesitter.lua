@@ -1,5 +1,6 @@
 return {
     "nvim-treesitter/nvim-treesitter",
+	"nvim-treesitter/nvim-treesitter-textobjects",
     build = ":TSUpdate",
 
     config = function ()
@@ -10,6 +11,17 @@ return {
           sync_install = false,
           highlight = { enable = true },
           indent = { enable = true },
-        })
-    end
+		  textobjects = {
+			  lsp_interop = {
+				  enable = true,
+				  border = 'none',
+				  floating_preview_opts = {},
+				  peek_definition_code = {
+					  ["<leader>df"] = "@function.outer",
+					  ["<leader>dF"] = "@class.outer",
+				  },
+			  },
+		  },
+	  })
+  end
 }
