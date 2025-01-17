@@ -20,3 +20,26 @@ vim.opt['shiftwidth'] = 4
 vim.opt.relativenumber = true
 
 require("lazy").setup("blink.lazy")
+
+local client = vim.lsp.start_client {
+	name = "bormlsp",
+	cmd = { "/home/unix/projects/borm-lsp/main" },
+}
+
+if not client then
+	vim.notify "hey, you didn't do the client thing good"
+	return
+end
+
+vim.filetype.add({
+	extension = {
+		sct = "bormscript"
+	}
+})
+
+vim.api.nvim_create_autocmd("FileType",  {
+	pattern = "bormscript",
+	callback = function()
+		vim.lsp.buf_attach_client(0, client)
+	end
+})
